@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+  <title>Signup and Login</title>
+</head>
+<body>
+  <button onclick="showSignupForm()">Sign Up</button>
+  <button onclick="showLoginForm()">Login</button>
+
+  <div id="signupForm" class="hidden">
+    <h2>Sign Up</h2>
+    <input type="text" placeholder="Username" id="signupUsername">
+    <input type="password" placeholder="Password" id="signupPassword">
+    <button onclick="storeUserData()">Submit</button>
+  </div>
+
+  <div id="loginForm" class="hidden">
+    <h2>Login</h2>
+    <input type="text" placeholder="Username" id="loginUsername">
+    <input type="password" placeholder="Password" id="loginPassword">
+    <button onclick="login()">Submit</button>
+  </div>
+
+  <script>
+    function showSignupForm() {
+      document.getElementById('signupForm').classList.remove('hidden');
+      document.getElementById('loginForm').classList.add('hidden');
+    }
+
+    function showLoginForm() {
+      document.getElementById('loginForm').classList.remove('hidden');
+      document.getElementById('signupForm').classList.add('hidden');
+    }
+
+    function storeUserData() {
+      const username = document.getElementById('signupUsername').value;
+      const password = document.getElementById('signupPassword').value;
+
+      // Store user data locally
+      localStorage.setItem('username', username);
+      localStorage.setItem('password', password);
+
+      clearScreen();
+    }
+
+    function login() {
+      const storedUsername = localStorage.getItem('username');
+      const storedPassword = localStorage.getItem('password');
+
+      const inputUsername = document.getElementById('loginUsername').value;
+      const inputPassword = document.getElementById('loginPassword').value;
+
+      if (inputUsername === storedUsername && inputPassword === storedPassword) {
+        clearScreen();
+      } else {
+        alert('Incorrect username or password.');
+      }
+    }
+
+    function clearScreen() {
+      document.body.innerHTML = '';
+    }
+  </script>
+</body>
+</html>
+

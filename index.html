@@ -1,0 +1,228 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #333;
+      color: white; 
+    }
+  
+    .button {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: center;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  
+    .button:hover {
+      background-color: #45a049;
+    }
+  
+    #output {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+      background-color: #444;
+      color: white;
+    }
+  
+    @media (max-width: 768px) {
+      .button {
+        font-size: 16px;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+
+<button class="button" onclick="sectionUnderConstruction()">Signup as a Doctor</button>
+<button class="button" onclick="showSignupForm()">Signup as a User</button>
+<button class="button" onclick="showLoginForm()">Login</button>
+<button class="button" onclick="getHealthUpdates()">Get Health Updates</button>
+<button class="button" onclick="talkToAIAssistant()">Talk to AI Health Assistants</button>
+
+
+<div id="output"></div>
+
+<script>
+  function sectionUnderConstruction() {
+    document.getElementById('output').innerHTML = 'Section under construction';
+  }
+
+  function showSignupForm() {
+    document.getElementById('output').innerHTML = `
+      <form id="signupForm" onsubmit="saveUserData(); return false;">
+        <label for="uniqueID">Unique ID:</label>
+        <input type="text" id="uniqueID" required class="inputField"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required class="inputField"><br>
+        <button type="submit" class="submitButton">Signup</button>
+      </form>
+    `;
+  
+    // Apply additional styles to achieve circular input boxes
+    const inputFields = document.querySelectorAll('.inputField');
+    inputFields.forEach(input => {
+      input.style.borderRadius = '50px';
+      input.style.padding = '10px';
+      input.style.width = '80%';
+    });
+  
+    // Style the submit button
+    const submitButton = document.querySelector('.submitButton');
+    submitButton.style.borderRadius = '50px';
+    submitButton.style.padding = '10px 30px';
+    submitButton.style.backgroundColor = '#4CAF50';
+    submitButton.style.color = 'white';
+    submitButton.style.fontWeight = 'bold';
+    submitButton.style.cursor = 'pointer';
+  
+    // Add hover effect to the submit button
+    submitButton.addEventListener('mouseover', () => {
+      submitButton.style.backgroundColor = '#45a049';
+    });
+  
+    submitButton.addEventListener('mouseout', () => {
+      submitButton.style.backgroundColor = '#4CAF50';
+    });
+  }
+  
+  function getHealthUpdates() {
+    document.getElementById('output').innerHTML = `
+      <div style="margin-top: 10px;">
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openWebsite('https://www.fda.gov')">FDA (U.S. Food and Drug Administration)</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openWebsite('https://www.cdc.gov')">CDC (Centers for Disease Control and Prevention)</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openWebsite('https://www.who.int')">WHO (World Health Organization)</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openWebsite('https://www.ncbi.nlm.nih.gov')">NCBI (National Center for Biotechnology Information)</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openWebsite('https://www.un.org')">UNO (United Nations Organization)</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openWebsite('https://www.mohfw.gov.in')">Ministry of Health and Family Welfare (India)</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openWebsite('https://www.icmr.gov.in')">Indian Council of Medical Research (ICMR)</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;" onclick="openWebsite('https://www.nhs.uk')">National Health Service (NHS - UK)</button>
+      </div>
+    `;
+  }
+  
+  
+  
+  function openWebsite(url) {
+    window.open(url, '_blank');
+  }
+  
+  
+
+  function talkToAIAssistant() {
+    document.getElementById('output').innerHTML = `
+      <div style="margin-top: 10px;">
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Health Inspector')">AI Health Inspector</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Psychiatrist')">AI Psychiatrist</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Nutritionist')">AI Nutritionist</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Sleep Consultant')">AI Sleep Consultant</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Elderly Care Advisor')">AI Elderly Care Advisor</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Child Health Advisor')">AI Child Health Advisor</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Dermatologist')">AI Dermatologist</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Women\'s Health Specialist')">AI Women's Health Specialist</button>
+        <button style="display: block; width: 100%; padding: 10px; margin-bottom: 5px; font-size: 14px; text-align: center; background-color: #FFC0CB; color: black; border: none; border-radius: 5px; cursor: pointer;" onclick="openAIAssistant('AI Dental Health Advisor')">AI Dental Health Advisor</button>
+      </div>
+    `;
+  }
+  
+  function openAIAssistant(doctorType) {
+    document.getElementById('output').innerHTML = `Initiating conversation with AI ${doctorType}...`;
+    // Add logic here to initiate a conversation with the specific AI doctor based on the doctorType.
+  }
+  
+  
+
+  function saveUserData() {
+    let uniqueID = document.getElementById('uniqueID').value;
+    let password = document.getElementById('password').value;
+
+      // Check if the ID already exists in localStorage
+    let existingUniqueID = localStorage.getItem('uniqueID');
+    if (existingUniqueID  === uniqueID) {
+      document.getElementById('output').innerHTML = 'Error: ID already exists';
+      return;
+    }
+
+    // Store user data in localStorage
+    localStorage.setItem('uniqueID', uniqueID);
+    localStorage.setItem('password', password);
+
+    document.getElementById('output').innerHTML = `User data saved: Unique ID - ${uniqueID}, Password - ${password}`;
+  }
+
+  function showLoginForm() {
+    document.getElementById('output').innerHTML = `
+      <form id="loginForm" onsubmit="login(); return false;">
+        <label for="loginUniqueID">Unique ID:</label>
+        <input type="text" id="loginUniqueID" required class="inputField"><br>
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" required class="inputField"><br>
+        <button type="submit" class="submitButton">Login</button>
+      </form>
+    `;
+  
+    // Apply additional styles to achieve circular input boxes
+    const inputFields = document.querySelectorAll('.inputField');
+    inputFields.forEach(input => {
+      input.style.borderRadius = '50px';
+      input.style.padding = '10px';
+      input.style.width = '80%';
+    });
+  
+    // Style the submit button
+    const submitButton = document.querySelector('.submitButton');
+    submitButton.style.borderRadius = '50px';
+    submitButton.style.padding = '10px 30px';
+    submitButton.style.backgroundColor = '#4CAF50';
+    submitButton.style.color = 'white';
+    submitButton.style.fontWeight = 'bold';
+    submitButton.style.cursor = 'pointer';
+  
+    // Add hover effect to the submit button
+    submitButton.addEventListener('mouseover', () => {
+      submitButton.style.backgroundColor = '#45a049';
+    });
+  
+    submitButton.addEventListener('mouseout', () => {
+      submitButton.style.backgroundColor = '#4CAF50';
+    });
+  }
+  
+
+  function login() {
+    let storedUniqueID = localStorage.getItem('uniqueID');
+    let storedPassword = localStorage.getItem('password');
+
+    let loginUniqueID = document.getElementById('loginUniqueID').value;
+    let loginPassword = document.getElementById('loginPassword').value;
+
+    if (storedUniqueID === loginUniqueID && storedPassword === loginPassword) {
+      // Redirect to google.com if login is successful
+      clearScreen();
+    } else {
+      alert('Login failed. Please check your credentials.');
+    }
+  }
+
+  function clearScreen() {
+    document.body.innerHTML = '';
+  }
+
+</script>
+
+</body>
+</html>
+

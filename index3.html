@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    /* Add your custom CSS styling here */
+    body {
+      padding: 20px;
+    }
+  </style>
+  <title>Profile</title>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mt-4 mb-4">Profile</h2>
+
+    <div class="form-group">
+      <label for="profilePicture">Profile Picture</label>
+      <input type="file" class="form-control" id="profilePicture">
+    </div>
+
+    <div class="form-group">
+      <label for="userID">User ID</label>
+      <input type="text" class="form-control" id="userID" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="profession">Profession</label>
+      <div class="btn-group">
+        <button type="button" class="btn btn-secondary" onclick="chooseProfession('Doctor')">Doctor</button>
+        <button type="button" class="btn btn-secondary" onclick="chooseProfession('User')">User</button>
+      </div>
+    </div>
+
+    <div id="doctorDetails" class="form-group" style="display: none;">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" id="location">
+    </div>
+
+    <!-- Add more form fields for other profile information -->
+
+    <button class="btn btn-primary" onclick="updateProfile()">Update Profile</button>
+  </div>
+
+  <script>
+    function chooseProfession(profession) {
+      const doctorDetails = document.getElementById('doctorDetails');
+      if (profession === 'Doctor') {
+        doctorDetails.style.display = 'block';
+      } else {
+        doctorDetails.style.display = 'none';
+      }
+    }
+
+    function updateProfile() {
+      alert('Profile updated successfully!');
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
